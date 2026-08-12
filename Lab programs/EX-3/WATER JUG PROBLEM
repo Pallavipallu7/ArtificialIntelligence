@@ -1,0 +1,38 @@
+from collections import deque
+
+def water_jug(cap1, cap2, target):
+    queue = deque([((0, 0), [])])
+    visited = {(0, 0)}
+
+    while queue:
+        (a, b), path = queue.popleft()
+
+        if a == target or b == target:
+            for state in path + [(a, b)]:
+                print(state)
+            return
+
+        states = [
+            (cap1, b),                 # Fill jug 1
+            (a, cap2),                 # Fill jug 2
+            (0, b),                    # Empty jug 1
+            (a, 0),                    # Empty jug 2
+            (a - min(a, cap2-b),
+             b + min(a, cap2-b)),      # Pour 1 -> 2
+            (a + min(b, cap1-a),
+             b - min(b, cap1-a))       # Pour 2 -> 1
+        ]
+
+        for state in states:
+            if state not in visited:
+                visited.add(state)
+                queue.append((state, path + [(a, b)]))
+
+    print("No solution")
+
+
+cap1 = int(input("Enter capacity of jug 1: "))
+cap2 = int(input("Enter capacity of jug 2: "))
+target = int(input("Enter target amount: "))
+
+water_jug(cap1, cap2, target)
