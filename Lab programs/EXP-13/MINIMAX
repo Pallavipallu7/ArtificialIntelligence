@@ -1,0 +1,22 @@
+def minimax(depth, node, maximizing):
+    # Leaf node values
+    if depth == 3:
+        return node
+
+    if maximizing:
+        return max(
+            minimax(depth + 1, node * 2, False),
+            minimax(depth + 1, node * 2 + 1, False)
+        )
+    else:
+        return min(
+            minimax(depth + 1, node * 2, True),
+            minimax(depth + 1, node * 2 + 1, True)
+        )
+
+
+print("Minimax Algorithm")
+
+result = minimax(0, 1, True)
+
+print("Best value:", result)
