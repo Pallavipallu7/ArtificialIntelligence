@@ -1,0 +1,28 @@
+def vacuum_cleaner():
+    rooms = {
+        "A": "Dirty",
+        "B": "Dirty"
+    }
+
+    position = "A"
+
+    print("Initial State:", rooms)
+
+    while "Dirty" in rooms.values():
+
+        if rooms[position] == "Dirty":
+            print("Vacuum cleans", position)
+            rooms[position] = "Clean"
+
+        elif position == "A":
+            print("Move from A to B")
+            position = "B"
+
+        else:
+            print("Move from B to A")
+            position = "A"
+
+    print("Final State:", rooms)
+
+
+vacuum_cleaner()
