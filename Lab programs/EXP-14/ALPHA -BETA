@@ -1,0 +1,56 @@
+def alphabeta(depth, node, alpha, beta, maximizing):
+
+    if depth == 3:
+        return node
+
+    if maximizing:
+        best = float("-inf")
+
+        for i in range(2):
+            value = alphabeta(
+                depth + 1,
+                node * 2 + i,
+                alpha,
+                beta,
+                False
+            )
+
+            best = max(best, value)
+            alpha = max(alpha, best)
+
+            if beta <= alpha:
+                print("Branch pruned at node:", node)
+                break
+
+        return best
+
+    else:
+        best = float("inf")
+
+        for i in range(2):
+            value = alphabeta(
+                depth + 1,
+                node * 2 + i,
+                alpha,
+                beta,
+                True
+            )
+
+            best = min(best, value)
+            beta = min(beta, best)
+
+            if beta <= alpha:
+                print("Branch pruned at node:", node)
+                break
+
+        return best
+
+
+result = alphabeta(
+    0, 1,
+    float("-inf"),
+    float("inf"),
+    True
+)
+
+print("Best value:", result)
