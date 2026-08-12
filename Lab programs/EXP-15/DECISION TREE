@@ -1,0 +1,33 @@
+from sklearn.tree import DecisionTreeClassifier
+
+# Dataset
+# Weather: 0 = Sunny, 1 = Rainy, 2 = Cloudy
+X = [
+    [0],
+    [0],
+    [1],
+    [1],
+    [2],
+    [2]
+]
+
+# Play: 0 = No, 1 = Yes
+y = [0, 0, 1, 1, 1, 1]
+
+# Create decision tree
+model = DecisionTreeClassifier()
+
+# Train
+model.fit(X, y)
+
+# User input
+weather = int(input(
+    "Enter weather (0=Sunny, 1=Rainy, 2=Cloudy): "
+))
+
+prediction = model.predict([[weather]])
+
+if prediction[0] == 1:
+    print("Prediction: Play")
+else:
+    print("Prediction: Do Not Play")
