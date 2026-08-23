@@ -1,0 +1,29 @@
+% Male members
+
+male(ram).
+male(suresh).
+male(ravi).
+male(rajesh).
+
+% Female members
+
+female(sita).
+female(geetha).
+female(priya).
+female(anu).
+
+% Parent relationships
+
+parent(ram, suresh).
+parent(sita, suresh).
+
+parent(ram, geetha).
+parent(sita, geetha).
+
+parent(suresh, ravi).
+parent(priya, ravi).
+
+parent(suresh, anu).
+parent(priya, anu).
+
+parent(geetha, rajesh).
