@@ -1,0 +1,11 @@
+% Diet recommendation based on disease
+
+diet(diabetes, 'Low sugar and high fiber diet').
+diet(hypertension, 'Low salt and low fat diet').
+diet(obesity, 'Low calorie and high protein diet').
+diet(anemia, 'Iron rich food such as spinach and beetroot').
+diet(cold, 'Warm fluids, fruits and nutritious food').
+
+% Rule to suggest diet
+suggest_diet(Disease, Diet) :-
+    diet(Disease, Diet).
