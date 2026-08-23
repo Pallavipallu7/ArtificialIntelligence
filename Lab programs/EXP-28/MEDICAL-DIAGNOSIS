@@ -1,0 +1,24 @@
+% Medical Diagnosis
+
+symptom(fever).
+symptom(cough).
+symptom(headache).
+symptom(body_pain).
+symptom(sneezing).
+symptom(runny_nose).
+symptom(sore_throat).
+
+diagnosis(flu) :-
+    symptom(fever),
+    symptom(cough),
+    symptom(body_pain).
+
+diagnosis(common_cold) :-
+    symptom(sneezing),
+    symptom(runny_nose),
+    symptom(sore_throat).
+
+diagnosis(viral_infection) :-
+    symptom(fever),
+    symptom(headache),
+    symptom(cough).
