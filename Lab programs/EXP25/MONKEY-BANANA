@@ -1,0 +1,21 @@
+% Monkey Banana Problem
+
+% State:
+% state(MonkeyPosition, MonkeyStatus, BoxPosition, BananaStatus)
+
+% Monkey moves from one position to another
+move(state(Pos1, onfloor, Box, Banana),
+     state(Pos2, onfloor, Box, Banana)) :-
+    Pos1 \= Pos2.
+
+% Monkey pushes the box
+push_box(state(Pos, onfloor, Pos, Banana),
+         state(Pos, onfloor, Pos, Banana)).
+
+% Monkey climbs on the box
+climb(state(Pos, onfloor, Pos, Banana),
+      state(Pos, onbox, Pos, Banana)).
+
+% Monkey grabs the banana
+grab(state(Pos, onbox, Pos, hanging),
+     state(Pos, onbox, Pos, grabbed)).
