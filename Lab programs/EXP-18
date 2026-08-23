@@ -1,0 +1,11 @@
+% Database containing Name and Date of Birth
+
+person(ravi, 10, 5, 2002).
+person(sita, 15, 8, 2001).
+person(rajesh, 20, 12, 2003).
+person(priya, 25, 3, 2002).
+person(anu, 5, 7, 2004).
+
+% Query a person's date of birth
+dob(Name, Day, Month, Year) :-
+    person(Name, Day, Month, Year).
