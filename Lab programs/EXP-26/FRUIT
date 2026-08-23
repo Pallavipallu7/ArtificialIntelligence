@@ -1,0 +1,9 @@
+% Fruit and Color Database
+
+fruit(apple, red).
+fruit(banana, yellow).
+fruit(orange, orange).
+fruit(grapes, green).
+fruit(mango, yellow).
+fruit(guava, green).
+fruit(strawberry, red).
