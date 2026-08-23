@@ -1,0 +1,30 @@
+% Student-Teacher-Subject Database
+
+student(ravi).
+student(sita).
+student(rajesh).
+student(priya).
+
+teacher(suresh).
+teacher(anita).
+teacher(kumar).
+
+subject(cse101).
+subject(cse102).
+subject(cse103).
+
+% Teacher teaches a subject
+teaches(suresh, cse101).
+teaches(anita, cse102).
+teaches(kumar, cse103).
+
+% Student studies a subject
+studies(ravi, cse101).
+studies(sita, cse102).
+studies(rajesh, cse103).
+studies(priya, cse101).
+
+% Find teacher of a student
+student_teacher(Student, Teacher) :-
+    studies(Student, Subject),
+    teaches(Teacher, Subject).
