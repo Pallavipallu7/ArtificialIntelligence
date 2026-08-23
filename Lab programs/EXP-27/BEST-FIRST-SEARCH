@@ -1,0 +1,52 @@
+% Best First Search
+
+edge(a,b).
+edge(a,c).
+edge(b,d).
+edge(b,e).
+edge(c,f).
+edge(c,g).
+edge(e,h).
+edge(f,h).
+
+% Heuristic values
+h(a,7).
+h(b,6).
+h(c,5).
+h(d,4).
+h(e,3).
+h(f,2).
+h(g,6).
+h(h,0).
+
+% Best First Search
+best_first(Start, Goal, Path) :-
+    best_first_search([Start], Goal, [Start], Path).
+
+best_first_search([Goal|_], Goal, _, [Goal]).
+
+best_first_search([Current|Open], Goal, Visited, [Current|Path]) :-
+    findall(
+        Next,
+        (edge(Current, Next), \+ member(Next, Visited)),
+        Children
+    ),
+    append(Open, Children, NewOpen),
+    sort_by_heuristic(NewOpen, SortedOpen),
+    SortedOpen = [Next|_],
+    best_first_search(
+        SortedOpen,
+        Goal,
+        [Next|Visited],
+        Path
+    ).
+
+sort_by_heuristic([], []).
+
+sort_by_heuristic(Nodes, Sorted) :-
+    map_list_to_pairs(heuristic, Nodes, Pairs),
+    keysort(Pairs, SortedPairs),
+    pairs_values(SortedPairs, Sorted).
+
+heuristic(Node, H) :-
+    h(Node, H).
