@@ -1,0 +1,24 @@
+% Backward Chaining
+
+% Facts
+fact(sunny).
+fact(warm).
+
+% Rules
+rule(happy, sunny).
+rule(comfortable, warm).
+rule(active, happy).
+rule(relaxed, comfortable).
+
+% Backward chaining
+backward_chain(Goal) :-
+    prove(Goal).
+
+% Goal is proved if it is a fact
+prove(Goal) :-
+    fact(Goal).
+
+% Goal can also be proved using a rule
+prove(Goal) :-
+    rule(Goal, Condition),
+    prove(Condition).
