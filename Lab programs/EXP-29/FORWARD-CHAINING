@@ -1,0 +1,30 @@
+% Forward Chaining
+
+% Initial facts
+fact(sunny).
+fact(warm).
+
+% Rules
+rule(sunny, happy).
+rule(warm, comfortable).
+rule(happy, active).
+rule(comfortable, relaxed).
+
+% Forward chaining
+forward_chain(Facts, FinalFacts) :-
+    apply_rules(Facts, NewFacts),
+    NewFacts \= Facts,
+    forward_chain(NewFacts, FinalFacts).
+
+forward_chain(Facts, Facts).
+
+apply_rules(Facts, NewFacts) :-
+    findall(
+        Y,
+        (rule(X,Y),
+         member(X,Facts),
+         \+ member(Y,Facts)),
+        Derived
+    ),
+    append(Facts, Derived, Temp),
+    sort(Temp, NewFacts).
